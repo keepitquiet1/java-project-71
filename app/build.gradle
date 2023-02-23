@@ -1,4 +1,6 @@
 plugins {
+    id 'application'
+    id 'checkstyle'
     id 'java'
 }
 
@@ -9,6 +11,14 @@ repositories {
     mavenCentral()
 }
 
+compileJava {
+    options.release = 17
+}
+
+application {
+    mainClass = 'hexlet.code.App'
+}
+
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
@@ -16,4 +26,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+checkstyle {
+    toolVersion '9.2.1'
 }
