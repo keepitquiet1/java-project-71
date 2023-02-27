@@ -12,15 +12,17 @@ import java.security.MessageDigest;
 import java.util.concurrent.Callable;
 
 public class App {
-    @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "gendiff 4.0",
+    @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "gendiff 0.0.1",
             description = "Compares two configuration files and shows a difference.")
     static class GenDiff implements Callable<Integer> {
 
-        //@Parameters(index = "0", description = "The file whose checksum to calculate.")
-        //private File file;
+        @Parameters(index = "0", description = "path to first file")
+        private File filepath1;
+        @Parameters(index = "1", description = "path to second file")
+        private File filepath2;
 
-        //@Option(names = {"-a", "--algorithm"}, description = "MD5, SHA-1, SHA-256, ...")
-        //private String algorithm = "SHA-256";
+        @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
+        private String format = "SHA-256";
 
         @Override
         public Integer call() throws Exception { // your business logic goes here...
