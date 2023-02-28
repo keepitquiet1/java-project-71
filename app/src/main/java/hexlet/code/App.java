@@ -40,17 +40,20 @@ public class App {
     }
 
     public static void main(String... args) {
-//        int exitCode = new CommandLine(new GenDiff()).execute(args);
-//        System.exit(exitCode);
         String test1;
         String test2;
+        if (args[0]==null || args[1]==null) {
+            System.out.println("Input file paths and try again!");
+            return;
+        }
         try {
-            test1 = fileToString("C:/dev/test.json");
-            test2 = fileToString("C:/dev/test2.json");
+            test1 = fileToString(args[0]);
+            test2 = fileToString(args[1]);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        String[] arr = args;
         String lines1[] = test1.split("\\n");
         String lines2[] = test2.split("\\n");
         Map<String, String> map1 = getMap(lines1);
