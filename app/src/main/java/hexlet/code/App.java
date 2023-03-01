@@ -6,13 +6,12 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.file.Files;
-import java.security.MessageDigest;
-import java.util.*;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
@@ -35,8 +34,8 @@ public class App implements Callable<Integer> {
         String test1 = fileToString(filepath1);
         String test2 = fileToString(filepath2);
 
-        String lines1[] = test1.split("\\n");
-        String lines2[] = test2.split("\\n");
+        String[] lines1 = test1.split("\\n");
+        String[] lines2 = test2.split("\\n");
 
         Map<String, String> map1 = getMap(lines1);
         Map<String, String> map2 = getMap(lines2);
@@ -118,3 +117,4 @@ public class App implements Callable<Integer> {
 
     }
 }
+
