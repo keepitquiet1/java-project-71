@@ -47,13 +47,13 @@ public class App {
             return;
         }
         try {
+
             test1 = fileToString(args[0]);
             test2 = fileToString(args[1]);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        String[] arr = args;
         String lines1[] = test1.split("\\n");
         String lines2[] = test2.split("\\n");
         Map<String, String> map1 = getMap(lines1);
