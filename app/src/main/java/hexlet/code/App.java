@@ -16,46 +16,28 @@ import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
-public class App {
+@Command(name = "app", mixinStandardHelpOptions = true, version = "app 0.0.1",
+        description = "Compare 2 JSONs.")
+public class App implements Callable<Integer> {
     @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "gendiff 0.0.1",
             description = "Compares two configuration files and shows a difference.")
-    static class GenDiff implements Callable<Integer> {
 
-        @Parameters(index = "0", description = "path to first file")
-        private File filepath1;
-        @Parameters(index = "1", description = "path to second file")
-        private File filepath2;
+    @Parameters(index = "0", description = "path to first file")
+    private String filepath1;
+    @Parameters(index = "1", description = "path to second file")
+    private String filepath2;
 
-        @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
-        private String format = "SHA-256";
+    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
+    private String format = "SHA-256";
 
-        @Override
-        public Integer call() throws Exception { // your business logic goes here...
-            //byte[] fileContents = Files.readAllBytes(file.toPath());
-            //byte[] digest = MessageDigest.getInstance(algorithm).digest(fileContents);
-            //System.out.printf("%0" + (digest.length * 2) + "x%n", new BigInteger(1, digest));
-            return 0;
-        }
+    @Override
+    public Integer call() throws Exception { // your business logic goes here...
+        String test1 = fileToString(filepath1);
+        String test2 = fileToString(filepath2);
 
-    }
-
-    public static void main(String... args) {
-        String test1;
-        String test2;
-        if (args[0]==null || args[1]==null) {
-            System.out.println("Input file paths and try again!");
-            return;
-        }
-        try {
-
-            test1 = fileToString(args[0]);
-            test2 = fileToString(args[1]);
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
         String lines1[] = test1.split("\\n");
         String lines2[] = test2.split("\\n");
+
         Map<String, String> map1 = getMap(lines1);
         Map<String, String> map2 = getMap(lines2);
 
@@ -63,8 +45,13 @@ public class App {
         Map<String, String> resultMap = compareJson(map1, map2);
 
         printSortedMap(resultMap);
+        return 0;
+    }
 
 
+    public static void main(String... args) {
+        int exitCode = new CommandLine(new App()).execute(args);
+        System.exit(exitCode);
     }
 
     private static String fileToString(String path) throws IOException {
