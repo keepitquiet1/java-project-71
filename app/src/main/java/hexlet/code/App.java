@@ -53,7 +53,7 @@ public class App implements Callable<Integer> {
         System.exit(exitCode);
     }
 
-    private static String fileToString(String path) throws IOException {
+    public static String fileToString(String path) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(path));
         StringBuilder stringBuilder = new StringBuilder();
         String line = null;
@@ -69,7 +69,7 @@ public class App implements Callable<Integer> {
         return content;
     }
 
-    private static Map<String, String> getMap(String[] file1) {
+    public static Map<String, String> getMap(String[] file1) {
         Map<String, String> result = new HashMap<>();
         for (String s : file1) {
             if (!s.startsWith("{") && !s.startsWith("}")) {
@@ -114,7 +114,5 @@ public class App implements Callable<Integer> {
         }
         System.out.println("}");
 
-
     }
 }
-

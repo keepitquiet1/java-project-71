@@ -13,6 +13,7 @@ class AppTest {
     public static Map<String, String> json1 = new HashMap<>();
     public static Map<String, String> json2 = new HashMap<>();
     public static Map<String, String> result = new HashMap<>();
+    public String[] testStrings = {"testKey_1: TestValue_1", "testKey_2: TestValue_2"};
 
     @BeforeAll
     public static void setUp() {
@@ -27,11 +28,13 @@ class AppTest {
     }
 
     @Test
-    void compareJson() {
+    void testCompareJson() {
         Assertions.assertEquals(App.compareJson(json1, json2), result);
     }
 
-    void isTrue() {
-        Assertions.assertTrue(true);
+    @Test
+    void getMap() {
+        Assertions.assertEquals(App.getMap(testStrings), json1);
     }
+
 }
