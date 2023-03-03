@@ -30,7 +30,8 @@ class AppTest {
     void compareJson() {
         Assertions.assertEquals(App.compareJson(json1, json2), result);
     }
-    void isTrue(){
+
+    void isTrue() {
         Assertions.assertTrue(true);
     }
 }
