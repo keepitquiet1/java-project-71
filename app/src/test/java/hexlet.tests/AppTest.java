@@ -1,6 +1,6 @@
 package hexlet.tests;
 
-import hexlet.code.App;
+import hexlet.code.Parser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -29,12 +29,12 @@ class AppTest {
 
     @Test
     void testCompareJson() {
-        Assertions.assertEquals(App.compareJson(json1, json2), result);
+        Assertions.assertEquals(Parser.compareJson(json1, json2), result);
     }
 
     @Test
     void getMap() {
-        Assertions.assertEquals(App.getMap(testStrings), json1);
+        Assertions.assertEquals(Parser.getMap(testStrings), json1);
     }
 
 }
