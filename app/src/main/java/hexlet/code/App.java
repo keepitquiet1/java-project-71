@@ -23,7 +23,7 @@ public class App implements Callable<Integer> {
     private String format = "SHA-256";
 
     @Override
-    public Integer call() throws Exception { // your business logic goes here...
+    public Integer call() throws Exception {
         String test1 = Parser.fileToString(filepath1);
         String test2 = Parser.fileToString(filepath2);
 
