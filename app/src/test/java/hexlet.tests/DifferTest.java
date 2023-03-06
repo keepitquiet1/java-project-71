@@ -188,6 +188,7 @@ public class DifferTest {
     public void generate() throws Exception {
 
         String expected1 = """
+                {
                 "chars1=[a, b, c]": "unchanged",
                 "chars2=[d, e, f]": "deleted",
                 "chars2=false": "added",
@@ -211,6 +212,7 @@ public class DifferTest {
                 "setting2=300": "added",
                 "setting3=true": "deleted",
                 "setting3=none": "added"
+                }
                 """;
 
         String actual1 = Differ.generate("src/test/resources/nested.json",
