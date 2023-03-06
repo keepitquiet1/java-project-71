@@ -158,4 +158,66 @@ public class DifferTest {
         assertThat(actual4).isEqualTo(expected4);
 
     }
+    @Test
+    public void generatePlain() throws Exception {
+
+        var expected1 = """
+                Property 'chars2' was updated. From [complex value] to false
+                Property 'checked' was updated. From false to true
+                Property 'default' was updated. From null to [complex value]
+                Property 'id' was updated. From 45 to null
+                Property 'key1' was removed
+                Property 'key2' was added with value: 'value2'
+                Property 'numbers2' was updated. From [complex value] to [complex value]
+                Property 'numbers3' was removed
+                Property 'numbers4' was added with value: [complex value]
+                Property 'obj1' was added with value: [complex value]
+                Property 'setting1' was updated. From 'Some value' to 'Another value'
+                Property 'setting2' was updated. From 200 to 300
+                Property 'setting3' was updated. From true to 'none'
+                """;
+
+        String actual1 = Differ.generate("src/test/resources/nested.json",
+                "src/test/resources/nested2.json", "plain");
+
+        assertThat(actual1).isEqualTo(expected1);
+
+    }
+
+    @Test
+    public void generate() throws Exception {
+
+        String expected1 = """
+                {
+                "chars1=[a, b, c]": "unchanged",
+                "chars2=[d, e, f]": "deleted",
+                "chars2=false": "added",
+                "checked=false": "deleted",
+                "checked=true": "added",
+                "default=null": "deleted",
+                "default=[value1, value2]": "added",
+                "id=45": "deleted",
+                "id=null": "added",
+                "key1=value1": "deleted",
+                "key2=value2": "added",
+                "numbers1=[1, 2, 3, 4]": "unchanged",
+                "numbers2=[2, 3, 4, 5]": "deleted",
+                "numbers2=[22, 33, 44, 55]": "added",
+                "numbers3=[3, 4, 5]": "deleted",
+                "numbers4=[4, 5, 6]": "added",
+                "obj1={nestedKey=value, isNested=true}": "added",
+                "setting1=Some value": "deleted",
+                "setting1=Another value": "added",
+                "setting2=200": "deleted",
+                "setting2=300": "added",
+                "setting3=true": "deleted",
+                "setting3=none": "added"
+                }
+                """;
+
+        String actual1 = Differ.generate("src/test/resources/nested.json",
+                "src/test/resources/nested2.json", "json");
+
+        assertThat(actual1).isEqualTo(expected1);
+    }
 }
