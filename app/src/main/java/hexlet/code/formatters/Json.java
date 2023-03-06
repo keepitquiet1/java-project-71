@@ -22,7 +22,8 @@ public class Json {
 
         while (iterator.hasNext()) {
             Map.Entry<String, String> entry = iterator.next();
-            result.append("  \"" + entry.getKey() + "\": \"" + entry.getValue()+ "\"" + (iterator.hasNext() ? ",\n": "\n"));
+            result.append("  \"" + entry.getKey() + "\": \"" + entry.getValue() + "\""
+                    + (iterator.hasNext() ? ",\n" : "\n"));
         }
 
         result.append("}" + "\n");

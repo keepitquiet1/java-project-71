@@ -7,10 +7,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+
 public class Differ {
     public static String generate(String filePath1, String filePath2) throws Exception {
         return generate(filePath1, filePath2, "stylish");
     }
+
     public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
         Path absolutePath1 = getAbsolutePath(filePath1);
         Path absolutePath2 = getAbsolutePath(filePath2);
@@ -33,6 +35,7 @@ public class Differ {
         String result = Formatter.format(mapOfDiff, map1, map2, formatName);
         return result;
     }
+
     public static Path getAbsolutePath(String path) {
         String loweredPath = path.toLowerCase();
         Path absolutePath = Paths.get(loweredPath).toAbsolutePath().normalize();

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import hexlet.code.Differ;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -30,10 +31,12 @@ public class DifferTest {
         pathYML1 = "src/test/resources/mockData/nested.yml";
         pathYML2 = "src/test/resources/mockData/nested2.yml";
     }
+
     private static String readMock(String fileName) throws Exception {
         Path filePath = getMockPath(fileName);
         return Files.readString(filePath);
     }
+
     private static Path getMockPath(String fileName) {
         return Paths.get("src", "test", "resources", "mockData", fileName)
                 .toAbsolutePath().normalize();
@@ -52,9 +55,9 @@ public class DifferTest {
         String expected4 = resultJson;
 
         assertEquals(expected12.replaceAll("\\r", ""), actual1);
-        assertEquals(expected12.replaceAll("\\r", ""),actual2);
+        assertEquals(expected12.replaceAll("\\r", ""), actual2);
         assertEquals(expected3.replaceAll("\\r", ""), actual3);
-        assertEquals(expected4.replaceAll("\\r", ""),actual4);
+        assertEquals(expected4.replaceAll("\\r", ""), actual4);
     }
 
     @Test
