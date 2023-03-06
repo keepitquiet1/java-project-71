@@ -1,16 +1,10 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Map;
 import java.util.concurrent.Callable;
 
 @Command(name = "app", mixinStandardHelpOptions = true, version = "app 0.0.1",
@@ -28,19 +22,17 @@ public final class App implements Callable<Integer> {
             description = "output format [default: stylish]",
             paramLabel = "format",
             defaultValue = "stylish")
-    private String format = "SHA-256";
+    private String format;
 
     @Override
     public Integer call() throws Exception {
-        String test1 = Parser.fileToString(filepath1);
-        String test2 = Parser.fileToString(filepath2);
-
-        Map<String, String> map1 = Parser.getMap(test1.split("\\n"));
-        Map<String, String> map2 = Parser.getMap(test2.split("\\n"));
-
-        Map<String, String> resultMap = Parser.compareJson(map1, map2);
-
-        Parser.printSortedMap(resultMap);
+        try {
+            String formattedDiff = Differ.generate(filepath1, filepath2, format);
+            System.out.println(formattedDiff);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return 1;
+        }
 
         return 0;
     }
