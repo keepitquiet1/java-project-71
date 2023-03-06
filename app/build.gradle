@@ -14,6 +14,7 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+
 }
 
 compileJava {
@@ -29,6 +30,8 @@ dependencies {
 
     implementation 'info.picocli:picocli:4.7.1'
 
+    implementation files('libs/jackson-databind-2.9.9.3.jar')
+
     testImplementation (
             'org.junit.jupiter:junit-jupiter-params:5.8.1',
             'org.slf4j:slf4j-log4j12:2.0.0-alpha6',
@@ -36,6 +39,9 @@ dependencies {
     )
 
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.2'
 
     errorprone 'com.google.errorprone:error_prone_core:2.11.0'
 
