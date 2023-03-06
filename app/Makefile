@@ -1,33 +1,29 @@
 .DEFAULT_GOAL := build-run
 
+PATH1=src/test/resources/test.json
+PATH2=src/test/resources/test2.json
+YML1=src/test/resources/test.yml
+YML2=src/test/resources/test2.yml
+NEST1=src/test/resources/nested.json
+NEST2=src/test/resources/nested2.json
+
 clean:
 	./gradlew clean
-
-build:
-	./gradlew clean build
-
+	@@ -20,18 +14,6 @@ build:
 install:
 	./gradlew clean install
 
 run-dist:
-	./build/install/java-package/bin/java-package
+	./build/install/app/bin/app $(PATH1) $(PATH2)
 
-run:
-	./gradlew run
+run-dist-wrong:
+	./build/install/app/bin/app $(PATH1) $(PATH3)
 
-test:
-	./gradlew test
+run-dist-yml:
+	./build/install/app/bin/app $(YML1) $(YML2)
 
-report:
-	./gradlew jacocoTestReport
+run-dist-yml-wrong:
+	./build/install/app/bin/app $(YML1) $(YML3)
 
-lint:
-	./gradlew checkstyleMain checkstyleTest
-
-update-deps:
-	./gradlew useLatestVersions
-
-
-build-run: build run
-
-.PHONY: build
+run-dist-nest:
+	./build/install/app/bin/app $(NEST1) $(NEST2)
