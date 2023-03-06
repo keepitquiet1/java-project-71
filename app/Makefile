@@ -14,8 +14,14 @@ build:
 install:
 	./gradlew clean install
 
-run-dist:
-	./build/install/java-package/bin/java-package
+run-dist-nest:
+	./build/install/app/bin/app $(NEST1) $(NEST2)
+
+run-dist-nest-yml:
+	./build/install/app/bin/app $(NEST3) $(NEST4)
+
+run-dist-plain:
+	./build/install/app/bin/app -f plain $(NEST1) $(NEST2)
 
 run:
 	./gradlew run
