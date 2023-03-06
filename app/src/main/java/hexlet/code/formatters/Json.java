@@ -25,8 +25,9 @@ public class Json {
             result.append("  \"" + entry.getKey() + "\": \"" + entry.getValue() + "\""
                     + (iterator.hasNext() ? ",\n" : "\n"));
         }
-
-        result.append("}" + "\n");
+        result.append("}");
+        int resultLength = result.length();
+        result.delete(resultLength - 2, resultLength - 1);
 
         return result.toString();
     }

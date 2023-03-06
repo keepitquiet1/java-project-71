@@ -10,7 +10,7 @@ public class Formatter {
     public static String format(Map<String, String> mapOfDiff,
                                 Map<String, Object> map1,
                                 Map<String, Object> map2,
-                                String style) throws JsonProcessingException {
+                                String style) {
 
         String result;
 
