@@ -1,15 +1,16 @@
 package hexlet.code.formatters;
 
 
-import java.util.Map;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
-import static hexlet.code.formatters.Json.jsonFormatter;
-import static hexlet.code.formatters.Plain.plainFormatter;
+import java.util.Map;
 
 public class Formatter {
 
-    public static String format(Map<String, String> mapOfDiff, Map<String, Object> map1,
-                                Map<String, Object> map2, String style) {
+    public static String format(Map<String, String> mapOfDiff,
+                                Map<String, Object> map1,
+                                Map<String, Object> map2,
+                                String style) throws JsonProcessingException {
 
         String result;
 
@@ -18,14 +19,12 @@ public class Formatter {
                 result = Stylish.stylishFormatter(mapOfDiff, map1, map2);
             }
             case "plain" -> {
-                result = plainFormatter(mapOfDiff, map1, map2);
+                result = Plain.plainFormatter(mapOfDiff, map1, map2);
             }
             case "json" -> {
-                result = jsonFormatter(mapOfDiff, map1, map2);
+                result = Json.jsonFormatter(mapOfDiff);
             }
-            default -> {
-                return "Unsupported style!";
-            }
+            default -> throw new RuntimeException("Unsupported style: " + style);
         }
         return result;
     }

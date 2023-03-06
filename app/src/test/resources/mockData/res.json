@@ -1,0 +1,17 @@
+{
+  "chars1": "unchanged",
+  "chars2": "changed",
+  "checked": "changed",
+  "default": "changed",
+  "id": "changed",
+  "key1": "deleted",
+  "key2": "added",
+  "numbers1": "unchanged",
+  "numbers2": "changed",
+  "numbers3": "deleted",
+  "numbers4": "added",
+  "obj1": "added",
+  "setting1": "changed",
+  "setting2": "changed",
+  "setting3": "changed"
+}
