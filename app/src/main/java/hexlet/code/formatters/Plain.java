@@ -8,7 +8,7 @@ import java.util.Map;
 public class Plain {
 
     public static String plainFormatter(Map<String, String> mapOfDiff, Map<String,
-            Object> map1, Map<String, Object> map2)  {
+            Object> map1, Map<String, Object> map2) {
 
         StringBuilder str = new StringBuilder();
 
@@ -32,11 +32,11 @@ public class Plain {
                     break;
                 }
                 default -> {
-                    return  "Something went wrong! Could not create a resulting string. Input: " + forTest;
+                    return "Something went wrong! Could not create a resulting string. Input: " + forTest;
                 }
             }
         }
-        return str.toString().substring(0, str.toString().length()-1);
+        return str.toString().substring(0, str.toString().length() - 1);
     }
 
     private static String prepareValues(Object value) {
