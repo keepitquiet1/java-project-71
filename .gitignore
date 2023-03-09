@@ -11,3 +11,6 @@ bin
 .project*
 .classpath
 .idea/
+/app/.idea/
+/app/build/
+/app/gradle/

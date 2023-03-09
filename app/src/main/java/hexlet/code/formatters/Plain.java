@@ -32,15 +32,17 @@ public class Plain {
                     break;
                 }
                 default -> {
-                    return  "Something went wrong! Could not create a resulting string.";
+                    return  "Something went wrong! Could not create a resulting string. Input: " + forTest;
                 }
             }
         }
-        return str.toString();
+        return str.toString().substring(0, str.toString().length()-1);
     }
 
     private static String prepareValues(Object value) {
-
+        if (value == null) {
+            return "null";
+        }
         if (value instanceof String) {
             return "'" + value + "'";
         } else if (value instanceof Map || value instanceof Array || value instanceof List) {

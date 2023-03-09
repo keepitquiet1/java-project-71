@@ -12,16 +12,4 @@ public class Parser {
         return mapper.readValue(contentOfFile, Map.class);
     }
 
-    public static ObjectMapper mapperFactory(String extension) throws Exception {
-
-        switch (extension) {
-            case "json" -> {
-                return new ObjectMapper();
-            }
-            case "yml", "yaml" -> {
-                return new YAMLMapper();
-            }
-            default -> throw new Exception("Unsupported file extension!");
-        }
-    }
 }

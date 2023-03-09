@@ -54,10 +54,10 @@ public class DifferTest {
         String expected3 = resultPlain;
         String expected4 = resultJson;
 
-        assertEquals(expected12.replaceAll("\\r", ""), actual1);
-        assertEquals(expected12.replaceAll("\\r", ""), actual2);
-        assertEquals(expected3.replaceAll("\\r", ""), actual3);
-        assertEquals(expected4.replaceAll("\\r", ""), actual4);
+        assertEquals(expected12, actual1);
+        assertEquals(expected12, actual2);
+        assertEquals(expected3, actual3);
+        assertEquals(expected4, actual4);
     }
 
     @Test
@@ -72,10 +72,10 @@ public class DifferTest {
         var expected3 = resultPlain;
         var expected4 = resultJson;
 
-        assertEquals(expected12.replaceAll("\\r", ""), actual1);
-        assertEquals(expected12.replaceAll("\\r", ""), actual2);
-        assertEquals(expected3.replaceAll("\\r", ""), actual3);
-        assertEquals(expected4.replaceAll("\\r", ""), actual4);
+        assertEquals(expected12, actual1);
+        assertEquals(expected12, actual2);
+        assertEquals(expected3, actual3);
+        assertEquals(expected4, actual4);
 
     }
 
