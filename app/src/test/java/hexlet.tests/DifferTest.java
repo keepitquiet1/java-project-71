@@ -15,10 +15,13 @@ public class DifferTest {
     private static String resultPlain;
     private static String resultStylish;
 
-    private static String pathJSON1;
-    private static String pathJSON2;
-    private static String pathYML1;
-    private static String pathYML2;
+    private static String pathJSON1 = "src/test/resources/mockData/nested.json";
+    private static String pathJSON2 = "src/test/resources/mockData/nested2.json";
+    ;
+    private static String pathYML1 = "src/test/resources/mockData/nested.yml";
+    ;
+    private static String pathYML2 = "src/test/resources/mockData/nested2.yml";
+    ;
 
     @BeforeEach
     public void beforeEach() throws Exception {
@@ -26,10 +29,6 @@ public class DifferTest {
         resultJson = readMock("res.json");
         resultPlain = readMock("res-plain.txt");
         resultStylish = readMock("res-stylish.txt");
-        pathJSON1 = "src/test/resources/mockData/nested.json";
-        pathJSON2 = "src/test/resources/mockData/nested2.json";
-        pathYML1 = "src/test/resources/mockData/nested.yml";
-        pathYML2 = "src/test/resources/mockData/nested2.yml";
     }
 
     private static String readMock(String fileName) throws Exception {
