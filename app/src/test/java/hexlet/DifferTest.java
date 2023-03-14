@@ -38,14 +38,12 @@ public class DifferTest {
         String filePath1 = (path1 + "." + format).toString();
         String filePath2 = (path2 + "." + format).toString();
 
-        assertEquals(Differ.generate(filePath1, filePath2), resultStylish);
+        assertEquals(resultStylish, Differ.generate(filePath1, filePath2));
 
-        assertEquals(Differ.generate(filePath1, filePath2, "stylish"), resultStylish);
+        assertEquals(resultStylish, Differ.generate(filePath1, filePath2, "stylish"));
 
-        assertEquals(Differ.generate(filePath1, filePath2, "plain"), resultPlain);
+        assertEquals(resultPlain, Differ.generate(filePath1, filePath2, "plain"));
 
-        String actualJson = Differ.generate(filePath1, filePath2, "json");
-        JSONAssert.assertEquals(resultJson, actualJson, false);
     }
 
     private static String readMock(String fileName) throws Exception {

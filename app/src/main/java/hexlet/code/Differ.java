@@ -49,9 +49,7 @@ public class Differ {
 
         int index = filePath.lastIndexOf('.');
 
-        return index > 0
-                ? filePath.substring(index + 1)
-                : "";
+        return index > 0 ? filePath.substring(index + 1) : "";
 
     }
 
