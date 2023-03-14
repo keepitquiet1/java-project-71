@@ -2,24 +2,22 @@ package hexlet.code.formatters;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import hexlet.code.Value;
 
 import java.util.Map;
 
 public class Formatter {
 
-    public static String format(Map<String, String> mapOfDiff,
-                                Map<String, Object> map1,
-                                Map<String, Object> map2,
-                                String style) throws JsonProcessingException {
+    public static String format(Map<String, Value> mapOfDiff, String style) throws JsonProcessingException {
 
         String result;
 
         switch (style) {
             case "stylish" -> {
-                result = Stylish.stylishFormatter(mapOfDiff, map1, map2);
+                result = Stylish.stylishFormatter(mapOfDiff);
             }
             case "plain" -> {
-                result = Plain.plainFormatter(mapOfDiff, map1, map2);
+                result = Plain.plainFormatter(mapOfDiff);
             }
             case "json" -> {
                 result = Json.jsonFormatter(mapOfDiff);

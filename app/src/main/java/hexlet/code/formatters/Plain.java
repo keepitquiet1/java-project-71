@@ -1,5 +1,7 @@
 package hexlet.code.formatters;
 
+import hexlet.code.Value;
+
 import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Map;
@@ -7,44 +9,44 @@ import java.util.Map;
 
 public class Plain {
 
-    public static String plainFormatter(Map<String, String> mapOfDiff, Map<String,
-            Object> map1, Map<String, Object> map2) {
+    public static String plainFormatter(Map<String, Value> mapOfDiff) {
 
         StringBuilder str = new StringBuilder();
 
-        for (Map.Entry<String, String> element : mapOfDiff.entrySet()) {
+        for (Map.Entry<String, Value> element : mapOfDiff.entrySet()) {
 
-            var value1 = map1.get(element.getKey());
-            var value2 = map2.get(element.getKey());
+            String status = element.getValue().getStatus();
+            String key = element.getKey();
+            var value1 = element.getValue().getValue();
+            var value2 = element.getValue().getNewValue();
 
             var valueResult1 = prepareValues(value1);
             var valueResult2 = prepareValues(value2);
 
-            switch (element.getValue()) {
-                case "deleted" -> str.append("Property " + "'" + element.getKey() + "'" + " was removed" + "\n");
-                case "added" -> str.append("Property " + "'" + element.getKey() + "'" + " was added with value: "
-                        + valueResult2 + "\n");
-                case "changed" -> str.append("Property " + "'" + element.getKey() + "'" + " was updated. " + "From "
-                        + valueResult1 + " to " + valueResult2 + "\n");
-                case "unchanged" -> {
-                    break;
-                }
+            switch (status) {
+                case "deleted" -> str.append("Property " + "'").append(key).append("'").append(" was removed")
+                        .append("\n");
+                case "added" -> str.append("Property " + "'").append(key).append("'").append(" was added with value: ")
+                        .append(valueResult2).append("\n");
+                case "changed" -> str.append("Property " + "'").append(key).append("'").append(" was updated. ")
+                        .append("From ").append(valueResult1).append(" to ").append(valueResult2).append("\n");
+                case "unchanged" -> { }
                 default -> {
-                    throw new RuntimeException("the wrong input: " + element.getValue());
+                    return "Something went wrong for input: " + element.getValue();
                 }
             }
         }
-        return str.toString().substring(0, str.toString().length() - 1);
+        return str.toString().trim();
     }
 
     private static String prepareValues(Object value) {
-        if (value == null) {
-            return "null";
-        }
+
         if (value instanceof String) {
             return "'" + value + "'";
         } else if (value instanceof Map || value instanceof Array || value instanceof List) {
             return "[complex value]";
+        } else if (value == null) {
+            return "null";
         }
         return String.valueOf(value);
     }

@@ -1,32 +1,37 @@
 package hexlet.code.formatters;
 
+import hexlet.code.Value;
 
 import java.util.Map;
 
 public class Stylish {
 
-    public static String stylishFormatter(Map<String, String> mapOfDiff, Map<String,
-            Object> map1, Map<String, Object> map2) {
+    public static String stylishFormatter(Map<String, Value> mapOfDiff) {
 
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("{\n");
-        for (Map.Entry<String, String> element : mapOfDiff.entrySet()) {
-            switch (element.getValue()) {
-                case "deleted" ->
-                        stringBuilder.append("- " + element.getKey() + ": " + map1.get(element.getKey()) + "\n");
-                case "added" ->
-                        stringBuilder.append("+ " + element.getKey() + ": " + map2.get(element.getKey()) + "\n");
-                case "unchanged" ->
-                        stringBuilder.append("  " + element.getKey() + ": " + map1.get(element.getKey()) + "\n");
-                case "changed" ->
-                        stringBuilder.append("- " + element.getKey() + ": " + map1.get(element.getKey()) + "\n"
-                                + "+ " + element.getKey() + ": " + map2.get(element.getKey()) + "\n");
+        StringBuilder str = new StringBuilder();
+
+        str.append("{\n");
+
+        for (Map.Entry<String, Value> element : mapOfDiff.entrySet()) {
+
+            String status = element.getValue().getStatus();
+            String key = element.getKey();
+            var value1 = element.getValue().getValue();
+            var value2 = element.getValue().getNewValue();
+
+            switch (status) {
+                case "deleted" -> str.append("  - ").append(key).append(": ").append(value1).append("\n");
+                case "added" -> str.append("  + ").append(key).append(": ").append(value2).append("\n");
+                case "unchanged" -> str.append("    ").append(key).append(": ").append(value1).append("\n");
+                case "changed" -> str.append("  - ").append(key).append(": ").append(value1).
+                        append("\n").append("  + ").append(key).append(": ").append(value2).append("\n");
                 default -> {
-                    throw new RuntimeException("the wrong input: " + element.getValue());
+                    return "Something went wrong for input: " + element.getValue();
                 }
             }
         }
-        stringBuilder.append("}");
-        return stringBuilder.toString();
+
+        str.append("}");
+        return str.toString();
     }
 }

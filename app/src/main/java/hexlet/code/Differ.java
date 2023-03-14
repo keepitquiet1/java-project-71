@@ -28,11 +28,14 @@ public class Differ {
 
         Map<String, Object> map1 = Parser.getData(contentOfFile1, mapper1);
         Map<String, Object> map2 = Parser.getData(contentOfFile2, mapper2);
-        Map<String, String> mapOfDiff = DifferenceFinder.findDifference(map1, map2);
+
+        Map<String, Value> mapOfDiff = DifferenceFinder.findDifference(map1, map2);
+
         if (mapOfDiff.isEmpty()) {
             return "The files are empty!";
         }
-        String result = Formatter.format(mapOfDiff, map1, map2, formatName);
+
+        String result = Formatter.format(mapOfDiff, formatName);
         return result;
     }
 
