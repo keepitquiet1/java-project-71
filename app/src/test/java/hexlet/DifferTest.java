@@ -3,7 +3,6 @@ package hexlet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import hexlet.code.Differ;
-import org.skyscreamer.jsonassert.JSONAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
