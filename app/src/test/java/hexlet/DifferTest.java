@@ -1,4 +1,4 @@
-package hexlet.tests;
+package hexlet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

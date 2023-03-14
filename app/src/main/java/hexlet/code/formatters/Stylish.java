@@ -22,7 +22,7 @@ public class Stylish {
                         stringBuilder.append("- " + element.getKey() + ": " + map1.get(element.getKey()) + "\n"
                                 + "+ " + element.getKey() + ": " + map2.get(element.getKey()) + "\n");
                 default -> {
-                    return "Something went wrong!";
+                    throw new RuntimeException("the wrong input: " + element.getValue());
                 }
             }
         }

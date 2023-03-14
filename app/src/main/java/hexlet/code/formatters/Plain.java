@@ -20,9 +20,7 @@ public class Plain {
             var valueResult1 = prepareValues(value1);
             var valueResult2 = prepareValues(value2);
 
-            String forTest = element.getValue();
-
-            switch (forTest) {
+            switch (element.getValue()) {
                 case "deleted" -> str.append("Property " + "'" + element.getKey() + "'" + " was removed" + "\n");
                 case "added" -> str.append("Property " + "'" + element.getKey() + "'" + " was added with value: "
                         + valueResult2 + "\n");
@@ -32,7 +30,7 @@ public class Plain {
                     break;
                 }
                 default -> {
-                    return "Something went wrong! Could not create a resulting string. Input: " + forTest;
+                    throw new RuntimeException("the wrong input: " + element.getValue());
                 }
             }
         }

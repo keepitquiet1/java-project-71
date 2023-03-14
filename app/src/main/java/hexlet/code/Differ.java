@@ -24,8 +24,8 @@ public class Differ {
         String contentOfFile1 = Files.readString(absolutePath1);
         String contentOfFile2 = Files.readString(absolutePath2);
 
-        ObjectMapper mapper1 = mapperFactory(file1Extension);
-        ObjectMapper mapper2 = mapperFactory(file2Extension);
+        ObjectMapper mapper1 = Parser.mapperFactory(file1Extension);
+        ObjectMapper mapper2 = Parser.mapperFactory(file2Extension);
 
         Map<String, Object> map1 = Parser.getData(contentOfFile1, mapper1);
         Map<String, Object> map2 = Parser.getData(contentOfFile2, mapper2);
@@ -53,16 +53,4 @@ public class Differ {
 
     }
 
-    public static ObjectMapper mapperFactory(String extension) throws Exception {
-
-        switch (extension) {
-            case "json" -> {
-                return new ObjectMapper();
-            }
-            case "yml", "yaml" -> {
-                return new YAMLMapper();
-            }
-            default -> throw new Exception("Unsupported file extension!");
-        }
-    }
 }
