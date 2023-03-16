@@ -49,7 +49,7 @@ public class DifferTest {
 
     private static String readMock(String fileName) throws Exception {
         Path filePath = getMockPath(fileName);
-        return Files.readString(filePath).replaceAll("\r","");
+        return Files.readString(filePath);
     }
 
     private static Path getMockPath(String fileName) {
