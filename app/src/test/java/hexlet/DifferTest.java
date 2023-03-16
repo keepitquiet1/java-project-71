@@ -43,11 +43,13 @@ public class DifferTest {
 
         assertEquals(resultPlain, Differ.generate(filePath1, filePath2, "plain"));
 
+        assertEquals(resultJson, Differ.generate(filePath1, filePath2, "json"));
+
     }
 
     private static String readMock(String fileName) throws Exception {
         Path filePath = getMockPath(fileName);
-        return Files.readString(filePath);
+        return Files.readString(filePath).replaceAll("\r","");
     }
 
     private static Path getMockPath(String fileName) {
