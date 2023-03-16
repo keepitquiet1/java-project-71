@@ -17,4 +17,4 @@ Find the differences between two configuration files and shows the result of thi
 2. Open the directory with your terminal and type: "make install";
 3. Type in directory of the utility: ~$ ./build/install/app/bin/app file1 file2, where "file1" is a path to the first configuration file and "file2" is a path to the second one respectively. You can use Makefile commands as well.
 
-**For more information** type ~$ ./build/install/app/bin/app -h
+**For more information type:** ~$ ./build/install/app/bin/app -h
