@@ -21,7 +21,7 @@ public class Parser {
             case "yml", "yaml" -> {
                 return new YAMLMapper();
             }
-            default -> throw new Exception("Unsupported type!");
+            default -> throw new Exception("Unsupported type: " + dataFormat);
         }
     }
 
