@@ -53,7 +53,7 @@ public final class DifferTest {
     }
 
     private static Path getMockPath(String fileName) {
-        return Paths.get("src", "test", "resources", "mockData", fileName)
+        return Paths.get("src", "test", "resources", "fixtures", fileName)
                 .toAbsolutePath().normalize();
     }
 
