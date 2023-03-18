@@ -16,12 +16,12 @@ public final class DifferTest {
     private static String resultPlain;
     private static String resultStylish;
 
-    private static String pathJSON1 = "src/test/resources/mockData/nested.json";
-    private static String path1 = "src/test/resources/mockData/nested";
-    private static String path2 = "src/test/resources/mockData/nested2";
-    private static String pathJSON2 = "src/test/resources/mockData/nested2.json";
-    private static String pathYML1 = "src/test/resources/mockData/nested.yml";
-    private static String pathYML2 = "src/test/resources/mockData/nested2.yml";
+    private static String pathJSON1 = "src/test/resources/fixtures/nested.json";
+    private static String path1 = "src/test/resources/fixtures/nested";
+    private static String path2 = "src/test/resources/fixtures/nested2";
+    private static String pathJSON2 = "src/test/resources/fixtures/nested2.json";
+    private static String pathYML1 = "src/test/resources/fixtures/nested.yml";
+    private static String pathYML2 = "src/test/resources/fixtures/nested2.yml";
 
     @BeforeEach
     public void beforeEach() throws Exception {
