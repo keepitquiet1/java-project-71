@@ -26,9 +26,9 @@ public final class DifferTest {
     @BeforeEach
     public void beforeEach() throws Exception {
 
-        resultJson = readMock("res.json");
-        resultPlain = readMock("res-plain.txt");
-        resultStylish = readMock("res-stylish.txt");
+        resultJson = readMock("res.json").replaceAll("\r", "");
+        resultPlain = readMock("res-plain.txt").replaceAll("\r", "");
+        resultStylish = readMock("res-stylish.txt").replaceAll("\r", "");
     }
 
     @ParameterizedTest
